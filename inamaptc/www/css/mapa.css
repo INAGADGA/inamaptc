@@ -1,0 +1,200 @@
+/* 
+    Document   : mapa
+    Created on : 24-abr-2015, 9:46:05
+    Author     : PORTATIL
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+.ui-controlgroup-controls>label {
+    position: fixed !important;
+	font-size:small;
+	font-weight: bold;
+    height: auto;
+    width: auto;
+    overflow: auto;
+	clip:auto
+}
+.ui-controlgroup-horizontal .ui-controlgroup-controls {
+    display: block
+    
+}
+
+.ui-icon-download:after{
+background-image: url("../img/download.png");
+background-size: 16px 16px
+}
+ .ui-icon-road:after{
+background-image: url("../img/road.png");
+background-size: 16px 16px
+}
+
+.ui-icon-fullextent {
+background-image: url("../img/fullExtent.png")
+}
+.ui-icon-clean  {
+background-image: url("../img/clean.png")
+}
+
+.ui-icon-zoomlast {
+background-image: url("../img/zoomLast.png")
+}
+
+.ui-icon-localizacion {
+background-image: url("../img/ico_localizacion.png")
+}
+													
+
+.ui-content {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+	/* height: 90%; */
+    padding: 0!important
+	
+}  
+
+.alturaCabecera {
+   height: 8%
+  }
+.ajuste {
+    	float:right
+}
+.ajusteIZ{
+    	float:left
+}
+.yscroll {
+      height:375px;
+      overflow:auto
+      
+}
+
+.ovc {
+    width: 250px;
+    height: 290px;
+    overflow: scroll
+}
+
+.info {
+  padding: 1px;
+  font-weight: bold;
+  color: #000000;
+  background-color: #e6f2ff;
+  opacity:0.9
+ 
+ }
+
+ #myMapa {
+ width:22em;
+  background-color: #e6f2ff;
+  opacity:0.8
+ 
+ }
+#myPanel {
+ width:25em;
+  background-color: #e6f2ff;
+  opacity:0.8
+ 
+ }
+ .ui-mini {
+    margin: 1.2em
+}
+
+  
+.mapa {
+  width:100%;
+  height: 100%;
+  margin:1%;
+  border:1px solid #013253;
+  font-family: verdana,helvetica,arial,sans-serif;
+  font-size:90%
+ }
+.legend {
+    color:#013253;
+    font-family: verdana,helvetica,arial,sans-serif;
+    font-size:100%;
+    font-weight: bold
+}
+					
+.fieldset {
+  width:73%;
+  margin:1%;
+  border:1px solid #013253;
+  font-family: verdana,helvetica,arial,sans-serif;
+  font-size:90%
+ }
+#botones {
+    float : right
+}
+
+#presentacion {
+background-color:#013253;
+color:white;
+font-weight: bold;
+clear:both;
+text-align:center;
+padding:1px
+}	
+#footer1 {
+background-color:#013253;
+color:white;
+font-weight: bold !important;
+clear:both;
+text-align:center;
+padding:1px
+}	
+#header1 {
+background-color:#013253;
+color:white;
+font-weight: bold!important;
+clear:both;
+text-align:center;
+padding:1px
+}	
+#controlCoor {
+   display: block;
+   font-weight: bold;
+   margin-right: 6px;
+   float:right;
+   padding:6px 0 4px 6px;
+   border-radius:6px;
+   width:15em;
+   font-family: verdana,helvetica,arial,sans-serif;
+   font-size:1em;
+   background-color: #e6f2ff;
+   opacity:0.7
+}
+
+ #logodga{
+width: 20%
+
+	}
+#logoinaga2{
+width: 15%
+
+	} 
+#logoinaga {
+width: 20%
+
+}
+#localizarfoto {
+   width:48px;height:48px
+}
+#map { min-height:300px; height: 100%} 
+#pnlInstructions { background-color: #fff; padding: 10px; opacity:0.7 }
+    #pnlInstructions h2 {
+        margin: 0;
+        font-weight: bold
+    }
+
+.leaflet-control-mouseCoordinate{width:250px;min-height:30px;text-align:left;font-weight:bold;border-radius:5px;box-shadow:0 1px 5px rgba(0,0,0,.4);background:#e6f2ff;color:#333;padding:6px 10px 6px 6px; opacity:0.7}
+.leaflet-control-mouseCoordinate table{width:100%}.coords{width:90px}
+
+

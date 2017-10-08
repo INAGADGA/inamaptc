@@ -1,29 +1,268 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
-    <head>
+<head>
     <!--
         Personalice la directiva de seguridad de contenido en la etiqueta meta como sea necesario. Agregue "unsafe-inline" a default-src para permitir JavaScript insertado.
         Para obtener más detalles, consulte http://go.microsoft.com/fwlink/?LinkID=617521
     -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
-        
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>inamaptc</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Conectando con el dispositivo</p>
-                <p class="event received">El dispositivo está preparado</p>
-            </div>
+   
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script>
+        $(document).bind('mobileinit', function () {
+            $.mobile.changePage.defaults.changeHash = false;
+            $.mobile.hashListeningEnabled = false;
+            $.mobile.pushStateEnabled = false;
+        });
+    </script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <link rel="stylesheet" media="screen" href="css/leaflet-measure.css" type="text/css" />
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+
+    <!-- Load Esri Leaflet from CDN -->
+    <script src="https://unpkg.com/esri-leaflet@2.0.8"></script>
+    <!-- Load Esri legend -->
+    <script src="https://unpkg.com/esri-leaflet-renderers@2.0.4/dist/esri-leaflet-renderers-debug.js"></script>
+    <script src="js/legend.js"></script>
+
+  
+    <script type="text/javascript" src="https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v2.0.0/turf.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet.esri.geocoder/2.0.2/esri-leaflet-geocoder.css">
+    <script src="https://cdn.jsdelivr.net/leaflet.esri.geocoder/2.0.2/esri-leaflet-geocoder.js"></script>
+
+
+   
+    <script src="https://static.sekandocdn.net/static/feednami/feednami-client-v1.1.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato:900,300" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" media="screen" href="css/styles.css" type="text/css" />
+    <link rel="stylesheet" media="screen" href="css/dga.css" type="text/css" />
+    <link rel="stylesheet" href="css/mapa.css" type="text/css" />
+    <link rel="stylesheet" href="css/FeedEk.css" type="text/css" />
+    <link rel="stylesheet" href="css/Control.MiniMap.min.css" type="text/css" />
+    <script type="text/javascript" src="js/FeedEk.js"></script>
+    <script type="text/javascript" src="js/wms.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.14/proj4.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtWpdYpb6UWxWYHXC3h11aUvytSvEvP4E" async defer> </script>
+    <script src='https://unpkg.com/leaflet.gridlayer.googlemutant@latest/Leaflet.GoogleMutant.js'></script>
+    
+    <script src="js/leaflet-measure.min.js"></script>
+    <script src="js/minimap.js"></script>
+    <script src="js/exif.js"></script>
+    <script type="text/javascript" src="js/mapa.js"></script>
+
+     <script src="cordova.js"></script>    
+
+    
+    <title>inamaptc</title>
+</head>
+<body>
+    
+  
+    <div id="header" data-role="header"  data-position="fixed" >
+       
+       
+        <a href="#myMapa" class="ui-btn ui-btn-inline ui-corner-all ui-shadow   ui-icon-road ui-btn-icon-left" data-mini="true" data-theme="b">Mapa</a>
+        <h1>Gobierno de Aragón</h1>
+        <h1>Terrenos Cinegéticos</h1>
+        <a href="#myPanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow  ui-icon-power ui-btn-icon-left" data-mini="true" data-theme="b">Herramientas</a>
+    
+
+    </div>
+
+    <!-- <div data-role="content"> -->
+    <div id="main" data-role="main" class="ui-content">
+
+        <div id="map">
+            
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="scripts/platformOverrides.js"></script>
-        <script type="text/javascript" src="scripts/index.js"></script>
+
+       
+        <div data-role="panel" id="myMapa" data-display="overlay" data-position="left">
+            <div data-role="collapsible" data-mini="true" data-iconpos="right">
+
+
+                <h2>Herramientas Mapa</h2>
+                <div data-role="controlgroup" data-type="vertical" data-mini="true">
+
+
+                    <input type="button" value="Inicial" id="zoonini" data-icon="home" title="Zoom Inicial" alt="zoom inicial" />
+                    <input type="button" value="zoom Anterior" id="zoonant" data-icon="arrow-l" title="Zoom Anterior" alt="zoom anterior" />
+                    <input type="button" value="Localizaci&oacute;n" id="locate" data-icon="location" title="localizacion" alt="Mi posicion" />
+                    <input type="button" value="Borrar" id="clear" data-icon="delete" title="Limpiar mapa" />
+
+                </div>
+                <hr>
+                <div class="ui-field-contain">
+                    <div>
+                        <label for="slidercotos">Transparencia</label>
+                    </div>
+                    <div data-role="rangeslider" data-highlight="true" data-mini="true">
+                        <input type="range" name="slidercotos1" id="slidercotos1" value="1" min="0" max="1" step="0.1" />
+                        <input type="range" name="slidercotos2" id="slidercotos2" value="1" min="0" max="1" step="0.1" />
+                    </div>
+                </div>
+                <hr>
+                <div id="legend"></div>
+
+            </div>
+
+        </div>
+
+        <div data-role="panel" id="myPanel" data-display="overlay" data-position="right">
+
+
+            <div data-role="collapsibleset" class="ajuste leaflet-control">
+
+
+                <div data-role="collapsible" data-mini="true" data-iconpos="right" id="panelinfo">
+                    <h2>Informaci&oacute;n</h2>
+                    <div id="panel" class="yscroll">
+                        <div id="info" class="info">Datos Orto y Ocaso.</div>
+                        <div id="cotos" class="info">Cotos radio 1Km.</div>
+                        <div id="municipios" class="info">Municipios afectados.</div>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div data-role="collapsible" data-mini="true" data-iconpos="right" id="coordenadas">
+                    <h2>Ir a coordenadas</h2>
+
+                    <div class="ui-field-contain">
+                        *Longitud/Latitud decimal
+                        <label for="longitud" class="negrita">Long:</label>
+                        <input type="search" name="longitud" title="longitud" id="longitud" size="20" maxlength="20" label="longitud" data-mini="true">
+                        <label for="latitud" class="negrita">Lat:</label>
+                        <input type="search" name="latitud" title="latitud" label="latitud" id="latitud" size="20" maxlength="20" data-mini="true">
+                        <input type="button" value="Tranformar" id="idtxy" data-icon="gear" data-mini="true" data-iconpos="right" data-inline="true">
+
+                    </div>
+                    <hr>
+                    <div class="ui-field-contain">
+                        *ETRS/89 ZONA 30N
+                        <label for="cx" class="negrita">X:</label>
+                        <input type="search" name="CX" title="COORDENADA X" id="CX" size="20" maxlength="20" label="cx" data-mini="true">
+                        <label for="cy" class="negrita">Y:</label>
+                        <input type="search" name="CY" title="coordenada Y" label="CY" id="CY" size="20" maxlength="20" data-mini="true">
+                        <input type="button" value="Tranformar" id="idtgeo" data-icon="gear" data-mini="true" data-iconpos="right" data-inline="true">
+
+
+
+                        <input type="button" value="Ir a" id="ircoordendas" data-icon="search" data-mini="true" data-iconpos="right" data-inline="true">
+                    </div>
+                </div>
+
+
+
+                <div data-role="collapsible" data-mini="true" data-iconpos="right" id="resultados">
+                    <h2>B&uacute;squeda Cotos</h2>
+                    <div id="error" class="error negita"> </div>
+                    <div class="ui-field-contain">
+
+                        <label for="Matricula" class="negrita">Coto:</label>
+                        <input type="search" name="matricula" title="matricula" id="matricula" size="6" maxlength="6" label="matricula" data-mini="true">
+                        <label for="Fecha" class="negrita">Fecha:</label>
+                        <input type="date" name="fecha" title="Fecha Accidente" label="fecha" id="fecha" size="12" maxlength="12" data-mini="true">
+
+
+                        <input type="button" value="Buscar" id="verinfo" data-icon="search" data-mini="true" data-inline="true">
+                        <input type="button" value="Descargar Geo." id="download" data-icon="download" data-mini="true" data-inline="true" title="Descargar Geometr&iacutea" alt="Descargar Geometr&iacutea" />
+                        <hr>
+                        <input type="button" value="Cargar foto" id="foto" data-icon="camera" data-mini="true" data-inline="true" title="Cargar foto" alt="Cargar foto" />
+                        <input type="button" value="Tomar Foto" id="Tfoto" data-icon="camera" data-mini="true" data-inline="true" title="Tomar foto" alt="Tomar foto" />
+
+                        <input type="button" name="localizatfoto" id="localizafoto" title="Localizar una foto" value="Geoloc foto" data-icon="location" data-mini="true" data-inline="true" alt="Localizar una foto" />
+
+                        <hr>
+
+                        <img src="img/logoweb_Inaga_2.jpg" id="imagen" alt="foto" style="width:48px;height:48px;" />
+
+                        <div id="metadata" class="ui-field-contain">
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+    <div id="footer" data-role="footer" class="ui-bar" data-position="fixed">
+        <!--  class = 'ui-widget ui-widget-content ui-corner-all ui-button' -->
+        <h1>&copy;Instituto Aragon&eacute;s de Gesti&oacute;n Ambiental</h1>
+
+    </div>
+    <script>
+
+        $(function () {
+            $.mobile.loading('show', { theme: "a", text: "Cargando...", textonly: false, textVisible: true });
+            var ventana_alto = $(window).height();
+            var element = $('#header');
+            var altura = element.height();
+            var alturaFoot;
+            element = $('#main');
+            element.css("top", altura + 2);
+
+            element = $('#footer');
+            alturaFoot = element.height();
+            element = $('#map');
+            element.css("height", ventana_alto - (altura) - alturaFoot - 5);
+            $fecha = $('#fecha');
+            if ($fecha[0].type != "date") {
+                $.datepicker.regional['es'] = {
+                    closeText: 'Cerrar',
+                    //prevText: ' nextText: 'Sig>',
+                    currentText: 'Hoy',
+                    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+                        'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                    monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
+                        'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                    dayNames: ['Domingo', 'Lunes', 'Martes', 'Mi&eacute;rcoles', 'Jueves', 'Viernes', 'S&aacute;bado'],
+                    dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mier;', 'Juv', 'Vie', 'Sab'],
+                    dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+                    weekHeader: 'Sm',
+                    dateFormat: 'dd/mm/yy',
+                    firstDay: 1,
+                    isRTL: false,
+                    showMonthAfterYear: false,
+                    yearSuffix: ''
+                };
+                $.datepicker.setDefaults($.datepicker.regional["es"]);
+                $fecha.datepicker();
+            }
+            document.getElementById("fecha").value = hoy();
+            touchScroll('panel');
+
+            //logos();
+            initMap();
+            setTimeout(function () { $.mobile.loading('hide'); }, 2000);
+        });
+    </script>
+
     </body>
 </html>
